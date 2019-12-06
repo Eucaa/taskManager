@@ -1,6 +1,6 @@
 # Code Institute
 
-Welcome USER_NAME,
+Welcome Romy A. J. van Broekhuijsen,
 
 We have preinstalled all of the tools you need to get started.
 
