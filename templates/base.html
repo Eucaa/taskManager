@@ -1,0 +1,45 @@
+<!--Create a parent template for all the views.-->
+<!--This acts as a one-stop shop that neatly provides access and visibility to our JavaScript files, our CSS, and our navigation.-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	</link>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+</head>
+
+<body>
+	<h1>Outside!</h1>
+	{% block content %}
+	<!--The word "content" acts as an identifier that corresponds with other files.-->
+
+	{% endblock %}
+    
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+	<!--It's important to place the jQuery script before the stylesheet of Materialize.-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" type="text/javascript">
+		$(document).ready(function(){
+                $('.collapsible').collapsible();
+            });
+        $(document).ready(function(){
+            $('.datepicker').datepicker();
+        });
+        $('.datepicker').pickadate({
+            selectMonths: true, // Creates a dropdown to control month.
+            selectYears: 15, // Creates a dropdown of 15 years to control year.
+            today: 'Today',
+            clear: 'Clear',
+            close: 'Ok',
+            closeOnSelect: false // Close upon selecting a date.
+        });
+	</script>
+
+</body>
+
+</html>

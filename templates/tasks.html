@@ -1,0 +1,33 @@
+<!--Use a jinja block and the name of the parent template to receive the right data, and place it somewhere else.-->
+{% extends 'base.html' %}
+{% block content %}
+<!--The word "content" acts as an identifier that corresponds with other files.-->
+
+<!--display the contents of each field name that's in our database in our tasks collection-->
+
+<ul class="collapsible" data-collapsible="accordion">
+	<!-- taken from http://archives.materializecss.com/0.100.2/collapsible.html-->
+	{% for task in tasks %}
+	<li>
+		<div class="collapsible-header"><i class="material-icons">expand_more</i>
+			<strong>{{task.task_name}}</strong> - {{task.due_date}}
+		</div>
+		<div class="collapsible-body">
+			<span>
+                {{task.task_description}}
+            </span>
+		</div>
+	</li>
+	{% endfor %} <!--Loop through the above requested values in a collection (this can be an array, object, key/value-->
+
+	<li>
+		<div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+		<div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+	</li>
+	<li>
+		<div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+		<div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+	</li>
+</ul>
+
+{% endblock %}
