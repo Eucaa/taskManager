@@ -8,35 +8,51 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Document</title>
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-	</link>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" href="{{url_for('static' , filename='css/style.css')}}" type="text/css">
 </head>
 
 <body>
+    <header>
+        <nav>
+            <div class="nav-wrapper">
+            <a href="{{url_for('get_tasks')}}" class="brand-logo">Task Manager</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="{{url_for('get_tasks')}}">Home</a></li>
+                    <li><a href="{{url_for('add_task')}}">New Task</a></li>
+                    <li><a href="{{url_for('get_categories')}}">Manage Categories</a></li>
+                </ul>
+                <ul class="side-nav" id="mobile-demo">
+                    <li><a href="{{url_for('get_tasks')}}">Home</a></li>
+                    <li><a href="{{url_for('add_task')}}">New Task</a></li>
+                    <li><a href="{{url_for('get_categories')}}">Manage Categories</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 	<h1>Outside!</h1>
-	{% block content %}
-	<!--The word "content" acts as an identifier that corresponds with other files.-->
-
-	{% endblock %}
-    
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-	<!--It's important to place the jQuery script before the stylesheet of Materialize.-->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" type="text/javascript">
-		$(document).ready(function(){
-                $('.collapsible').collapsible();
-            });
+    <div class="container">
+        {% block content %}
+        <!--The word "content" acts as an identifier that corresponds with other files.-->
+        {% endblock %}
+    </div>     
+        <!--It's important to place the jQuery script before the stylesheet of Materialize.-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
         $(document).ready(function(){
-            $('.datepicker').datepicker();
-        });
-        $('.datepicker').pickadate({
-            selectMonths: true, // Creates a dropdown to control month.
-            selectYears: 15, // Creates a dropdown of 15 years to control year.
-            today: 'Today',
-            clear: 'Clear',
-            close: 'Ok',
-            closeOnSelect: false // Close upon selecting a date.
+            $('.datepicker').pickadate({
+                selectMonths: true, // Creates a dropdown to control month
+                selectYears: 15, // Creates a dropdown of 15 years to control year,
+                today: 'Today',
+                clear: 'Clear',
+                close: 'Ok',
+                closeOnSelect: false // Close upon selecting a date,
+            });
+            $(".button-collapse").sideNav();
+            $('select').material_select();
         });
 	</script>
 
